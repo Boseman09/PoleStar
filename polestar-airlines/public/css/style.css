@@ -1,0 +1,336 @@
+/* ==========================================================
+   Pole Star — design tokens
+   ========================================================== */
+:root{
+  --sky-top:#eaf6ff;
+  --sky-mid:#cfeafb;
+  --sky-horizon:#a9d9f2;
+  --navy:#102340;
+  --navy-soft:#2e4a68;
+  --gold:#f4b942;
+  --gold-deep:#d99a1e;
+  --white:#ffffff;
+  --mist:#f3f9fd;
+  --line:#d7e6f0;
+  --shadow-soft:0 10px 30px rgba(16,35,64,0.08);
+  --shadow-pop:0 16px 40px rgba(16,35,64,0.18);
+  --radius-lg:22px;
+  --radius-md:14px;
+  --font-display:'Roboto Slab', serif;
+  --font-body:'Inter', -apple-system, sans-serif;
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  font-family:var(--font-body);
+  color:var(--navy);
+  background:var(--mist);
+  overflow-x:hidden;
+}
+h1,h2,h3,.logo-word{ font-family:var(--font-display); }
+a{ color:inherit; text-decoration:none; }
+img{ max-width:100%; display:block; }
+button{ font-family:var(--font-body); cursor:pointer; }
+section{ padding:88px 8vw; }
+.eyebrow{
+  display:inline-block;
+  font-size:.75rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--gold-deep);
+  font-weight:700;
+  margin-bottom:10px;
+}
+.section-head{ max-width:640px; margin-bottom:48px; }
+.section-head h2{ font-size:2.1rem; margin:0 0 12px; }
+.section-head p{ color:var(--navy-soft); line-height:1.6; margin:0; }
+
+/* ==========================================================
+   Nav
+   ========================================================== */
+.nav{
+  position:fixed; top:0; left:0; right:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:18px 6vw;
+  background:rgba(234,246,255,0.72);
+  backdrop-filter:blur(14px) saturate(140%);
+  border-bottom:1px solid rgba(16,35,64,0.06);
+}
+.brand{ display:flex; align-items:center; gap:10px; }
+.brand svg{ width:34px; height:34px; }
+.logo-word{ font-size:1.35rem; font-weight:700; letter-spacing:.01em; color:var(--navy); }
+.logo-word span{ color:var(--gold-deep); }
+.nav-links{ display:flex; gap:34px; list-style:none; margin:0; padding:0; }
+.nav-links a{
+  font-size:.95rem; font-weight:500; color:var(--navy-soft);
+  position:relative; padding-bottom:4px;
+}
+.nav-links a:hover{ color:var(--navy); }
+.nav-links a::after{
+  content:''; position:absolute; left:0; bottom:0; height:2px; width:0;
+  background:var(--gold); transition:width .25s ease;
+}
+.nav-links a:hover::after{ width:100%; }
+.nav-auth{ display:flex; gap:12px; align-items:center; }
+.btn{
+  border:none; border-radius:999px; padding:11px 22px; font-size:.9rem;
+  font-weight:600; transition:transform .18s ease, box-shadow .18s ease;
+}
+.btn:active{ transform:scale(.97); }
+.btn-ghost{ background:transparent; color:var(--navy); border:1.5px solid rgba(16,35,64,0.18); }
+.btn-ghost:hover{ border-color:var(--navy); }
+.btn-solid{ background:var(--navy); color:var(--white); box-shadow:var(--shadow-soft); }
+.btn-solid:hover{ box-shadow:var(--shadow-pop); transform:translateY(-1px); }
+.btn-gold{ background:var(--gold); color:var(--navy); }
+.btn-gold:hover{ background:var(--gold-deep); }
+.nav-toggle{ display:none; background:none; border:none; }
+
+/* ==========================================================
+   Hero — sky, clouds, planes
+   ========================================================== */
+.hero{
+  position:relative;
+  height:100vh;
+  min-height:640px;
+  overflow:hidden;
+  padding:0;
+  background:linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 55%, var(--sky-horizon) 100%);
+}
+
+/* soft sun glow for atmosphere */
+.sun-glow{
+  position:absolute; top:8%; right:10%;
+  width:260px; height:260px; border-radius:50%;
+  background:radial-gradient(circle, rgba(255,250,230,0.9) 0%, rgba(255,250,230,0.25) 45%, transparent 70%);
+  filter:blur(2px);
+}
+
+/* ---- realistic layered clouds ---- */
+.cloud{
+  position:absolute;
+  width:240px; height:100px;
+  will-change:transform;
+  animation-name:drift;
+  animation-timing-function:linear;
+  animation-iteration-count:infinite;
+}
+.cloud .puff{
+  position:absolute; border-radius:50%;
+  background:radial-gradient(circle at 32% 28%, #ffffff 0%, #f2f8fc 55%, #dfe9f2 100%);
+}
+.cloud .puff1{ width:105px; height:72px; left:0;   top:26px; }
+.cloud .puff2{ width:140px; height:96px; left:58px; top:2px;  }
+.cloud .puff3{ width:115px; height:82px; left:150px; top:20px; }
+.cloud .puff4{ width:82px;  height:60px; left:200px; top:34px; }
+.cloud .puff5{ width:70px;  height:52px; left:26px;  top:44px; opacity:.92; }
+.cloud::after{
+  content:''; position:absolute; left:8%; right:8%; bottom:-4px; height:22px;
+  background:radial-gradient(ellipse at center, rgba(110,140,170,0.22), transparent 72%);
+  filter:blur(7px);
+}
+.cloud.far{  filter:blur(2.4px); opacity:.5; }
+.cloud.mid{  filter:blur(1.1px); opacity:.78; }
+.cloud.near{ filter:blur(.2px);  opacity:.98; }
+
+@keyframes drift{
+  from{ transform:translateX(-32vw) translateY(0); }
+  to{ transform:translateX(132vw) translateY(-14px); }
+}
+
+/* ---- planes on flight paths ---- */
+.plane{
+  position:absolute;
+  width:46px; height:46px;
+  offset-rotate:auto;
+  animation-timing-function:cubic-bezier(.45,.05,.55,.95);
+  animation-iteration-count:infinite;
+  opacity:0;
+}
+.plane svg{ width:100%; height:100%; filter:drop-shadow(0 3px 4px rgba(16,35,64,0.25)); }
+
+.plane-takeoff{
+  offset-path:path('M -40 560 C 220 560 300 260 560 90 C 640 42 720 20 820 8');
+  animation-name:takeoff;
+}
+.plane-landing{
+  offset-path:path('M 900 -10 C 760 30 640 70 470 220 C 300 370 180 470 -40 500');
+  animation-name:landing;
+}
+@keyframes takeoff{
+  0%{ offset-distance:0%;  opacity:0; }
+  6%{ opacity:1; }
+  92%{ opacity:1; }
+  100%{ offset-distance:100%; opacity:0; }
+}
+@keyframes landing{
+  0%{ offset-distance:0%;  opacity:0; }
+  6%{ opacity:1; }
+  92%{ opacity:1; }
+  100%{ offset-distance:100%; opacity:0; }
+}
+
+/* ---- runway strip at the base of the hero ---- */
+.runway{
+  position:absolute; left:0; right:0; bottom:0; height:64px;
+  background:linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.55) 100%);
+}
+.runway::before{
+  content:''; position:absolute; left:0; right:0; bottom:26px; height:3px;
+  background:repeating-linear-gradient(90deg, rgba(16,35,64,0.35) 0 26px, transparent 26px 54px);
+}
+
+/* ---- hero content ---- */
+.hero-content{
+  position:relative; z-index:5; height:100%;
+  display:flex; flex-direction:column; align-items:flex-start; justify-content:center;
+  padding:0 8vw; max-width:760px;
+}
+.hero-content h1{
+  font-size:clamp(2.4rem, 5vw, 4rem);
+  line-height:1.06; margin:0 0 20px; color:var(--navy);
+}
+.hero-content h1 em{
+  font-style:normal; color:var(--gold-deep);
+  background:linear-gradient(180deg, transparent 62%, rgba(244,185,66,0.4) 62%);
+}
+.hero-content p{
+  font-size:1.15rem; color:var(--navy-soft); max-width:520px; margin:0 0 32px; line-height:1.6;
+}
+.hero-cta{ display:flex; gap:16px; flex-wrap:wrap; }
+.hero-cta .btn{ padding:15px 28px; font-size:1rem; }
+
+/* ==========================================================
+   Offers — popping toast notifications
+   ========================================================== */
+.offer-toast{
+  position:fixed; right:26px; bottom:26px; z-index:80;
+  width:320px; background:var(--white); border-radius:var(--radius-md);
+  box-shadow:var(--shadow-pop); padding:18px 20px; display:flex; gap:14px;
+  border:1px solid var(--line);
+  transform:translateY(30px) scale(.96); opacity:0; pointer-events:none;
+  transition:transform .45s cubic-bezier(.2,.9,.3,1.2), opacity .35s ease;
+}
+.offer-toast.show{ transform:translateY(0) scale(1); opacity:1; pointer-events:auto; }
+.offer-toast .icon{
+  flex:0 0 auto; width:38px; height:38px; border-radius:50%;
+  background:linear-gradient(135deg, var(--gold), var(--gold-deep));
+  display:flex; align-items:center; justify-content:center; color:var(--navy); font-weight:700;
+}
+.offer-toast .body strong{ display:block; font-size:.95rem; margin-bottom:3px; }
+.offer-toast .body span{ font-size:.85rem; color:var(--navy-soft); line-height:1.4; }
+.offer-toast .close{
+  position:absolute; top:8px; right:10px; border:none; background:none;
+  font-size:1rem; color:var(--navy-soft); line-height:1;
+}
+
+/* ==========================================================
+   Airports map section
+   ========================================================== */
+#airport-map{
+  height:480px; border-radius:var(--radius-lg); overflow:hidden;
+  box-shadow:var(--shadow-soft); border:1px solid var(--line);
+}
+.leaflet-popup-content-wrapper{ border-radius:10px; font-family:var(--font-body); }
+.map-legend{ display:flex; gap:24px; margin-top:18px; flex-wrap:wrap; }
+.map-legend span{ font-size:.85rem; color:var(--navy-soft); display:flex; align-items:center; gap:8px; }
+.dot{ width:9px; height:9px; border-radius:50%; background:var(--gold-deep); display:inline-block; }
+
+/* ==========================================================
+   Airport directory (cards + modal)
+   ========================================================== */
+.airport-grid{
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(220px,1fr));
+  gap:18px;
+}
+.airport-card{
+  background:var(--white); border:1px solid var(--line); border-radius:var(--radius-md);
+  padding:20px; text-align:left; transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.airport-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow-soft); border-color:var(--gold); }
+.airport-card .code{
+  font-family:var(--font-display); font-size:1.5rem; color:var(--gold-deep); margin-bottom:6px;
+}
+.airport-card .city{ font-weight:700; font-size:1rem; margin-bottom:2px; }
+.airport-card .state{ font-size:.82rem; color:var(--navy-soft); }
+
+.modal-overlay{
+  position:fixed; inset:0; background:rgba(16,35,64,0.45); backdrop-filter:blur(3px);
+  display:flex; align-items:center; justify-content:center; z-index:100;
+  opacity:0; pointer-events:none; transition:opacity .25s ease;
+}
+.modal-overlay.show{ opacity:1; pointer-events:auto; }
+.modal-card{
+  background:var(--white); border-radius:var(--radius-lg); padding:32px; width:min(420px,88vw);
+  box-shadow:var(--shadow-pop); transform:translateY(16px); transition:transform .25s ease;
+}
+.modal-overlay.show .modal-card{ transform:translateY(0); }
+.modal-card .code{ font-family:var(--font-display); color:var(--gold-deep); font-size:2rem; }
+.modal-card h3{ margin:4px 0 2px; }
+.modal-card .state{ color:var(--navy-soft); margin-bottom:16px; font-size:.9rem; }
+.modal-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px; }
+.modal-grid div{ background:var(--mist); border-radius:10px; padding:10px 12px; }
+.modal-grid span{ display:block; font-size:.72rem; text-transform:uppercase; color:var(--navy-soft); letter-spacing:.06em; }
+.modal-grid strong{ font-size:1.05rem; }
+.modal-card p.note{ color:var(--navy-soft); line-height:1.5; font-size:.92rem; margin:0 0 20px; }
+.modal-close{
+  border:none; background:var(--navy); color:var(--white); border-radius:999px;
+  padding:10px 20px; font-weight:600;
+}
+
+/* ==========================================================
+   Auth pages
+   ========================================================== */
+.auth-wrap{
+  min-height:100vh; display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(180deg, var(--sky-top), var(--sky-mid));
+  padding:40px 20px;
+}
+.auth-card{
+  width:min(420px,100%); background:var(--white); border-radius:var(--radius-lg);
+  padding:44px 36px; box-shadow:var(--shadow-pop); border:1px solid var(--line);
+}
+.auth-card .brand{ justify-content:center; margin-bottom:8px; }
+.auth-card h1{ font-size:1.6rem; text-align:center; margin:14px 0 6px; }
+.auth-card p.sub{ text-align:center; color:var(--navy-soft); margin:0 0 28px; font-size:.92rem; }
+.field{ margin-bottom:18px; }
+.field label{ display:block; font-size:.82rem; font-weight:600; margin-bottom:6px; }
+.field input{
+  width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid var(--line);
+  font-size:.95rem; font-family:var(--font-body); transition:border-color .2s ease;
+}
+.field input:focus{ outline:none; border-color:var(--gold-deep); }
+.auth-card .btn{ width:100%; padding:13px; font-size:.98rem; margin-top:4px; }
+.auth-switch{ text-align:center; margin-top:22px; font-size:.88rem; color:var(--navy-soft); }
+.auth-switch a{ color:var(--gold-deep); font-weight:700; }
+.auth-error{ background:#fdecec; color:#b3261e; border-radius:10px; padding:10px 14px; font-size:.85rem; margin-bottom:16px; }
+
+/* ==========================================================
+   Footer
+   ========================================================== */
+footer{
+  background:var(--navy); color:#cfe0ee; padding:56px 8vw 28px;
+}
+.footer-grid{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:36px; margin-bottom:36px; }
+.footer-grid .brand .logo-word{ color:var(--white); }
+footer h4{ font-size:.85rem; text-transform:uppercase; letter-spacing:.08em; color:var(--gold); margin:0 0 14px; }
+footer ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px; }
+footer a{ color:#cfe0ee; font-size:.9rem; opacity:.85; }
+footer a:hover{ opacity:1; }
+.footer-bottom{ border-top:1px solid rgba(255,255,255,0.12); padding-top:20px; font-size:.8rem; opacity:.7; }
+
+/* ==========================================================
+   Responsive
+   ========================================================== */
+@media (max-width:860px){
+  .nav-links{ display:none; }
+  .nav-toggle{ display:block; }
+  section{ padding:64px 6vw; }
+  .offer-toast{ left:16px; right:16px; width:auto; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .cloud, .plane{ animation:none !important; }
+  .plane{ opacity:.9; }
+}

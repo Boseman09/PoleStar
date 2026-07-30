@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pole Star — Fly Every Corner of Bharat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<nav class="nav">
+  <div class="brand">
+    <svg viewBox="0 0 48 48" fill="none">
+      <circle cx="24" cy="24" r="22" stroke="#f4b942" stroke-width="2"/>
+      <path d="M24 6 L27 21 L42 24 L27 27 L24 42 L21 27 L6 24 L21 21 Z" fill="#f4b942"/>
+      <circle cx="24" cy="24" r="3.2" fill="#102340"/>
+    </svg>
+    <span class="logo-word">Pole<span>Star</span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#offers">Offers</a></li>
+    <li><a href="#map">Route Map</a></li>
+    <li><a href="#airports">Airports</a></li>
+  </ul>
+  <div class="nav-auth">
+    <a href="/login" class="btn btn-ghost">Log in</a>
+    <a href="/signup" class="btn btn-solid">Sign up</a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu">☰</button>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero" id="home">
+  <div class="sun-glow"></div>
+
+  <!-- layered clouds: far / mid / near, varied scale, speed & delay for parallax -->
+  <div class="cloud far"  style="top:8%;  left:-10%; transform:scale(.7);  animation-duration:150s; animation-delay:-10s;"><span class="puff puff1"></span><span class="puff puff2"></span><span class="puff puff3"></span><span class="puff puff4"></span><span class="puff puff5"></span></div>
+  <div class="cloud far"  style="top:22%; left:-30%; transform:scale(.55); animation-duration:170s; animation-delay:-60s;"><span class="puff puff1"></span><span class="puff puff2"></span><span class="puff puff3"></span><span class="puff puff4"></span><span class="puff puff5"></span></div>
+  <div class="cloud mid"  style="top:16%; left:-20%; transform:scale(1);   animation-duration:110s; animation-delay:-30s;"><span class="puff puff1"></span><span class="puff puff2"></span><span class="puff puff3"></span><span class="puff puff4"></span><span class="puff puff5"></span></div>
+  <div class="cloud mid"  style="top:34%; left:-40%; transform:scale(.85); animation-duration:125s; animation-delay:-80s;"><span class="puff puff1"></span><span class="puff puff2"></span><span class="puff puff3"></span><span class="puff puff4"></span><span class="puff puff5"></span></div>
+  <div class="cloud near" style="top:46%; left:-15%; transform:scale(1.3); animation-duration:85s;  animation-delay:-5s;"><span class="puff puff1"></span><span class="puff puff2"></span><span class="puff puff3"></span><span class="puff puff4"></span><span class="puff puff5"></span></div>
+  <div class="cloud near" style="top:60%; left:-35%; transform:scale(1.1); animation-duration:95s;  animation-delay:-45s;"><span class="puff puff1"></span><span class="puff puff2"></span><span class="puff puff3"></span><span class="puff puff4"></span><span class="puff puff5"></span></div>
+
+  <!-- planes taking off and landing along independent curved paths -->
+  <div class="plane plane-takeoff" style="animation-duration:13s; animation-delay:0s;">
+    <svg viewBox="0 0 64 64" fill="#102340"><path d="M32 2 L36 22 L58 34 L58 38 L36 32 L34 50 L44 58 L44 61 L32 57 L20 61 L20 58 L30 50 L28 32 L6 38 L6 34 L28 22 Z"/></svg>
+  </div>
+  <div class="plane plane-takeoff" style="animation-duration:13s; animation-delay:-7s;">
+    <svg viewBox="0 0 64 64" fill="#2e4a68"><path d="M32 2 L36 22 L58 34 L58 38 L36 32 L34 50 L44 58 L44 61 L32 57 L20 61 L20 58 L30 50 L28 32 L6 38 L6 34 L28 22 Z"/></svg>
+  </div>
+  <div class="plane plane-landing" style="animation-duration:15s; animation-delay:-3s;">
+    <svg viewBox="0 0 64 64" fill="#102340"><path d="M32 2 L36 22 L58 34 L58 38 L36 32 L34 50 L44 58 L44 61 L32 57 L20 61 L20 58 L30 50 L28 32 L6 38 L6 34 L28 22 Z"/></svg>
+  </div>
+
+  <div class="runway"></div>
+
+  <div class="hero-content">
+    <span class="eyebrow">Domestic flights, only in India</span>
+    <h1>Every city, <em>one star</em> away.</h1>
+    <p>Pole Star flies you between 20+ Indian cities with on-time departures, honest fares, and a route map built for the way India actually travels.</p>
+    <div class="hero-cta">
+      <a href="/signup" class="btn btn-gold">Book your first flight</a>
+      <a href="#map" class="btn btn-ghost">Explore the route map</a>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== OFFERS ===================== -->
+<section id="offers">
+  <div class="section-head">
+    <span class="eyebrow">Live fares</span>
+    <h2>Offers that land while you browse</h2>
+    <p>Keep this tab open — new domestic fare drops surface automatically in the corner, no refresh needed.</p>
+  </div>
+  <div class="airport-grid">
+    <% offers.forEach(function(o){ %>
+      <div class="airport-card">
+        <div class="code">₹</div>
+        <div class="city"><%= o.title %></div>
+        <div class="state"><%= o.text %></div>
+      </div>
+    <% }); %>
+  </div>
+</section>
+
+<!-- ===================== ROUTE MAP ===================== -->
+<section id="map">
+  <div class="section-head">
+    <span class="eyebrow">Where we fly</span>
+    <h2>Every Pole Star airport, on one map</h2>
+    <p>All routes are domestic. Tap a marker for a quick look, or open the full directory below for terminal and runway details.</p>
+  </div>
+  <div id="airport-map"></div>
+  <div class="map-legend"><span><i class="dot"></i> Pole Star airport</span></div>
+</section>
+
+<!-- ===================== AIRPORT DIRECTORY ===================== -->
+<section id="airports">
+  <div class="section-head">
+    <span class="eyebrow">Airport directory</span>
+    <h2>Details for every airport we serve</h2>
+    <p>Click any airport to see its code, terminals, runways, and a quick note on what to expect.</p>
+  </div>
+  <div class="airport-grid">
+    <% airports.forEach(function(a){ %>
+      <button class="airport-card" data-airport-code="<%= a.code %>">
+        <div class="code"><%= a.code %></div>
+        <div class="city"><%= a.city %></div>
+        <div class="state"><%= a.state %></div>
+      </button>
+    <% }); %>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="brand"><span class="logo-word">Pole<span>Star</span></span></div>
+      <p style="max-width:260px;opacity:.75;font-size:.88rem;margin-top:12px;">India's domestic airline, built around cities most carriers fly past.</p>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Newsroom</a></li></ul>
+    </div>
+    <div>
+      <h4>Travel</h4>
+      <ul><li><a href="#map">Route map</a></li><li><a href="#airports">Airports</a></li><li><a href="#offers">Offers</a></li></ul>
+    </div>
+    <div>
+      <h4>Account</h4>
+      <ul><li><a href="/login">Log in</a></li><li><a href="/signup">Sign up</a></li></ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© <%= new Date().getFullYear() %> Pole Star Airlines. Domestic travel, done right.</div>
+</footer>
+
+<!-- ===================== OFFER TOAST (popup) ===================== -->
+<div class="offer-toast" id="offer-toast">
+  <div class="icon">₹</div>
+  <div class="body">
+    <strong id="offer-title"></strong>
+    <span id="offer-text"></span>
+  </div>
+  <button class="close" id="offer-close" aria-label="Dismiss">✕</button>
+</div>
+
+<!-- ===================== AIRPORT MODAL ===================== -->
+<div class="modal-overlay" id="airport-modal">
+  <div class="modal-card">
+    <div class="code" id="modal-code"></div>
+    <h3 id="modal-city"></h3>
+    <div class="state" id="modal-state"></div>
+    <div class="modal-grid">
+      <div><span>Terminals</span><strong id="modal-terminals"></strong></div>
+      <div><span>Runways</span><strong id="modal-runways"></strong></div>
+    </div>
+    <p class="note" id="modal-note"></p>
+    <button class="modal-close" id="modal-close">Close</button>
+  </div>
+</div>
+
+<script>
+  window.__POLESTAR_AIRPORTS__ = <%- JSON.stringify(airports) %>;
+  window.__POLESTAR_OFFERS__ = <%- JSON.stringify(offers) %>;
+</script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+[
+  { "code": "DEL", "name": "Indira Gandhi International Airport", "city": "Delhi", "state": "Delhi", "lat": 28.5562, "lng": 77.1000, "terminals": 3, "runways": 4, "note": "India's busiest hub, gateway to the north." },
+  { "code": "BOM", "name": "Chhatrapati Shivaji Maharaj International Airport", "city": "Mumbai", "state": "Maharashtra", "lat": 19.0896, "lng": 72.8656, "terminals": 2, "runways": 2, "note": "Financial capital's coastal gateway." },
+  { "code": "BLR", "name": "Kempegowda International Airport", "city": "Bengaluru", "state": "Karnataka", "lat": 13.1986, "lng": 77.7066, "terminals": 2, "runways": 2, "note": "India's garden city, tech capital hub." },
+  { "code": "MAA", "name": "Chennai International Airport", "city": "Chennai", "state": "Tamil Nadu", "lat": 12.9941, "lng": 80.1709, "terminals": 2, "runways": 2, "note": "Gateway to the south, on the Bay of Bengal." },
+  { "code": "CCU", "name": "Netaji Subhas Chandra Bose International Airport", "city": "Kolkata", "state": "West Bengal", "lat": 22.6547, "lng": 88.4467, "terminals": 2, "runways": 2, "note": "Historic eastern gateway on the Hooghly." },
+  { "code": "HYD", "name": "Rajiv Gandhi International Airport", "city": "Hyderabad", "state": "Telangana", "lat": 17.2403, "lng": 78.4294, "terminals": 1, "runways": 2, "note": "City of pearls, modern hub." },
+  { "code": "AMD", "name": "Sardar Vallabhbhai Patel International Airport", "city": "Ahmedabad", "state": "Gujarat", "lat": 23.0772, "lng": 72.6347, "terminals": 2, "runways": 1, "note": "Gateway to Gujarat's business belt." },
+  { "code": "PNQ", "name": "Pune Airport", "city": "Pune", "state": "Maharashtra", "lat": 18.5822, "lng": 73.9197, "terminals": 1, "runways": 1, "note": "Fast-growing hub for the Deccan plateau." },
+  { "code": "GOX", "name": "Manohar International Airport", "city": "Goa (Mopa)", "state": "Goa", "lat": 15.7400, "lng": 73.8340, "terminals": 1, "runways": 1, "note": "Beach getaway, north Goa gateway." },
+  { "code": "JAI", "name": "Jaipur International Airport", "city": "Jaipur", "state": "Rajasthan", "lat": 26.8242, "lng": 75.8122, "terminals": 2, "runways": 1, "note": "Pink city, gateway to Rajasthan." },
+  { "code": "LKO", "name": "Chaudhary Charan Singh International Airport", "city": "Lucknow", "state": "Uttar Pradesh", "lat": 26.7606, "lng": 80.8893, "terminals": 2, "runways": 1, "note": "Heart of Awadh, culture and cuisine." },
+  { "code": "COK", "name": "Cochin International Airport", "city": "Kochi", "state": "Kerala", "lat": 10.1520, "lng": 76.4019, "terminals": 3, "runways": 1, "note": "World's first fully solar-powered airport." },
+  { "code": "GAU", "name": "Lokpriya Gopinath Bordoloi International Airport", "city": "Guwahati", "state": "Assam", "lat": 26.1061, "lng": 91.5859, "terminals": 1, "runways": 1, "note": "Gateway to the Northeast." },
+  { "code": "BBI", "name": "Biju Patnaik International Airport", "city": "Bhubaneswar", "state": "Odisha", "lat": 20.2444, "lng": 85.8178, "terminals": 1, "runways": 1, "note": "Temple city on the eastern coast." },
+  { "code": "SXR", "name": "Sheikh ul-Alam International Airport", "city": "Srinagar", "state": "Jammu & Kashmir", "lat": 33.9871, "lng": 74.7742, "terminals": 1, "runways": 1, "note": "Valley views, snow-ringed approach." },
+  { "code": "VNS", "name": "Lal Bahadur Shastri Airport", "city": "Varanasi", "state": "Uttar Pradesh", "lat": 25.4524, "lng": 82.8593, "terminals": 1, "runways": 1, "note": "Gateway to the ghats of the Ganges." },
+  { "code": "IDR", "name": "Devi Ahilya Bai Holkar Airport", "city": "Indore", "state": "Madhya Pradesh", "lat": 22.7218, "lng": 75.8011, "terminals": 1, "runways": 1, "note": "Commercial heart of Madhya Pradesh." },
+  { "code": "NAG", "name": "Dr. Babasaheb Ambedkar International Airport", "city": "Nagpur", "state": "Maharashtra", "lat": 21.0922, "lng": 79.0472, "terminals": 1, "runways": 1, "note": "Geographic centre of India." },
+  { "code": "PAT", "name": "Jay Prakash Narayan Airport", "city": "Patna", "state": "Bihar", "lat": 25.5913, "lng": 85.0879, "terminals": 1, "runways": 1, "note": "On the banks of the Ganga." },
+  { "code": "IXC", "name": "Chandigarh International Airport", "city": "Chandigarh", "state": "Chandigarh", "lat": 30.6735, "lng": 76.7885, "terminals": 1, "runways": 1, "note": "Planned city, gateway to the north hills." }
+]

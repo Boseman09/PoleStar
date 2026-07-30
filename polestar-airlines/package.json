@@ -1,0 +1,17 @@
+{
+  "name": "polestar-airlines",
+  "version": "1.0.0",
+  "description": "Pole Star Airlines - domestic travel front page (Express + EJS)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "ejs": "^3.1.10"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
